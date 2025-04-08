@@ -1,0 +1,70 @@
+services:
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - flask
+      - wekan
+      - rocketchat
+
+  flask:
+    build: ./flask-app
+    environment:
+      - DB_HOST=mariadb
+      - DB_USER=flaskuser
+      - DB_PASSWORD=flaskpass
+      - DB_NAME=flaskdb
+    depends_on:
+      - mariadb
+    volumes:
+      - ./flask-app:/app
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=flaskdb
+      - MYSQL_USER=flaskuser
+      - MYSQL_PASSWORD=flaskpass
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  wekan:
+    image: wekanteam/wekan
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/wekan
+      - ROOT_URL=https://wekan.localhost
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo_data:/data/db
+
+  rocketchat:
+    image: rocketchat/rocket.chat:latest
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/rocketchat
+      - ROOT_URL=https://chat.localhost
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - redis
+
+  redis:
+    image: redis:latest
+
+volumes:
+  caddy_data:
+  caddy_config:
+  mariadb_data:
+  mongo_data:
