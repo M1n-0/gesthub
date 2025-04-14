@@ -1,7 +1,7 @@
 FROM python:3.11
 
-WORKDIR /app
-COPY . /app
+WORKDIR /web
+COPY . /web
 
 RUN pip install flask flask_sqlalchemy pymysql
 
