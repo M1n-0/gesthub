@@ -1,13 +1,13 @@
 # Caddyfile
 
-flask.gesthub {
+flask.localhost {
     reverse_proxy flask:5000
 }
 
-wekan.gesthub {
+wekan.localhost {
     reverse_proxy wekan:8080
 }
 
-chat.gesthub {
+chat.localhost {
     reverse_proxy mattermost:8065
 }
