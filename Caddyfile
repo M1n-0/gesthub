@@ -1,15 +1,15 @@
-flask.gesthub {
+flask.ninolbt.com {
     reverse_proxy flask:5000
 }
 
-keycloak.gesthub {
+keycloak.ninolbt.com {
     reverse_proxy keycloak:8080
 }
 
-chat.gesthub {
+chat.ninolbt.com {
     reverse_proxy mattermost:8065
 }
 
-wekan.gesthub {
+wekan.ninolbt.com {
     reverse_proxy wekan:8080
 }
