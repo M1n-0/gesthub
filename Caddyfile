@@ -1,0 +1,17 @@
+# Caddyfile
+
+flask.localhost {
+    reverse_proxy flask:5000
+}
+
+wekan.localhost {
+    reverse_proxy wekan:8080
+}
+
+chat.localhost {
+    reverse_proxy mattermost:8065
+}
+
+keycloak.localhost {
+    reverse_proxy keycloak:8080
+}
