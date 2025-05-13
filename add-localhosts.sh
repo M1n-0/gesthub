@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HOSTS_FILE="/etc/hosts"
-DOMAINS=("flask.localhost" "keycloak.localhost" "chat.localhost" "wekan.localhost")
+DOMAINS=("flask.gesthub" "keycloak.gesthub" "chat.gesthub" "wekan.gesthub")
 
 echo "[🔧] Mise à jour de : $HOSTS_FILE"
 

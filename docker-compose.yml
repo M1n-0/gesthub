@@ -2,7 +2,7 @@ services:
   caddy:
     image: caddy:latest
     ports:
-      - "80:80"
+#      - "80:80"
       - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
@@ -22,8 +22,6 @@ services:
       - DB_USER=flaskuser
       - DB_PASSWORD=flaskpass
       - DB_NAME=flaskdb
-    extra_hosts:
-    - "keycloak.localhost:172.18.0.10"
     depends_on:
       - mariadb
     volumes:
@@ -117,7 +115,7 @@ services:
 networks:
   gesthub:
     driver: bridge
-    
+
 volumes:
   caddy_data:
   caddy_config:

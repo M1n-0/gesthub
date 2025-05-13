@@ -1,7 +1,7 @@
 @echo off
 set HOSTS_FILE=%SystemRoot%\System32\drivers\etc\hosts
 
-set DOMAINS=flask.localhost keycloak.localhost chat.localhost wekan.localhost
+set DOMAINS=flask.gesthub keycloak.gesthub chat.gesthub wekan.gesthub
 
 echo [🔧] Mise à jour de %HOSTS_FILE%
 
