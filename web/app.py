@@ -1,4 +1,5 @@
 import os
+import uuid
 from flask import Flask, redirect, url_for, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 from authlib.integrations.flask_client import OAuth
@@ -16,8 +17,8 @@ oauth = OAuth(app)
 keycloak = oauth.register(
     name='keycloak',
     client_id='flask-app',
-    client_secret='6R70kt1x9KjYpccZCMnPvJAGiJFzRHjE',
-    server_metadata_url='http://keycloak.localhost/realms/gesthub/.well-known/openid-configuration',
+    client_secret='IpVDkBPN6ya9oj8ZJPWNtW32bdaqv83Q',
+    server_metadata_url='https://keycloak.ninolbt.com/realms/gesthub/.well-known/openid-configuration',
     client_kwargs={
         'scope': 'openid profile email',
     }
@@ -27,21 +28,21 @@ keycloak = oauth.register(
 def index():
     user = session.get('user')
     if user:
-        return render_template('/view/index.html', user=user)
+        return render_template('view/index.html', user=user)
     return redirect(url_for('login'))
 
 @app.route('/login')
 def login():
     nonce = uuid.uuid4().hex
     session['nonce'] = nonce
-    redirect_uri = url_for('auth', _external=True)
-    return keycloak.authorize_redirect(redirect_uri)
+    redirect_uri = url_for('auth', _external=True, _scheme='https')
+    return keycloak.authorize_redirect(redirect_uri, nonce=nonce)
 
 @app.route('/auth')
 def auth():
     token = keycloak.authorize_access_token()
     nonce = session.pop('nonce', None)
-    userinfo = keycloak.parse_id_token(token)
+    userinfo = keycloak.parse_id_token(token, nonce=nonce)
     session['user'] = userinfo
     return redirect('/')
 
