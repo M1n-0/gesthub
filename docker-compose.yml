@@ -27,10 +27,30 @@ services:
     networks:
       - gesthub
 
-  mongo:
-    image: arm64v8/mongo:4.4
+  mattermost:
+    image: mattermost/mattermost-team-edition:latest
+    ports:
+      - "8065:8065"
+    environment:
+      - MM_SQLSETTINGS_DRIVERNAME=postgres
+      - MM_SQLSETTINGS_DATASOURCE=postgres://mmuser:mmuserpass@db:5432/mattermost?sslmode=disable
+      - MM_SERVICESETTINGS_SITEURL=https://mattermost.ninolbt.com
+      
+    depends_on:
+      - db
     volumes:
-      - mongo_data:/data/db
+      - mattermost_data:/mattermost/data
+    networks:
+      - gesthub
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=mattermost
+      - POSTGRES_USER=mmuser
+      - POSTGRES_PASSWORD=mmuserpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - gesthub
 
@@ -70,47 +90,13 @@ services:
     networks:
       - gesthub
 
-  # plane:
-  #   image: planehq/plane:latest
-  #   container_name: plane
-  #   depends_on:
-  #     - plane-db
-  #   environment:
-  #     DATABASE_URL: postgres://plane:plane@plane-db:5432/plane
-  #     SECRET_KEY: supersecretkeyhere
-  #     ENABLE_OPENID_CONNECT: "true"
-  #     OIDC_RP_CLIENT_ID: plane-client
-  #     OIDC_RP_CLIENT_SECRET: changeme
-  #     OIDC_OP_AUTHORIZATION_ENDPOINT: https://keycloak.ninolbt.com/realms/gesthub/protocol/openid-connect/auth
-  #     OIDC_OP_TOKEN_ENDPOINT: https://keycloak.ninolbt.com/realms/gesthub/protocol/openid-connect/token
-  #     OIDC_OP_USER_ENDPOINT: https://keycloak.ninolbt.com/realms/gesthub/protocol/openid-connect/userinfo
-  #     OIDC_OP_JWKS_ENDPOINT: https://keycloak.ninolbt.com/realms/gesthub/protocol/openid-connect/certs
-  #   ports:
-  #     - "3000:3000"
-  #   networks:
-  #     - gesthub
-
-  # plane-db:
-  #   image: postgres:15
-  #   container_name: plane-db
-  #   environment:
-  #     POSTGRES_DB: plane
-  #     POSTGRES_USER: plane
-  #     POSTGRES_PASSWORD: plane
-  #   volumes:
-  #     - plane_db_data:/var/lib/postgresql/data
-  #   networks:
-  #     - gesthub
-
 networks:
   gesthub:
     driver: bridge
 
 volumes:
-  caddy_data:
-  caddy_config:
   mariadb_data:
-  mongo_data:
+  mattermost_data:
+  postgres_data:
   keycloak_data:
   keycloakdb_data:
-  plane_db_data:
