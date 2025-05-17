@@ -28,6 +28,7 @@ keycloak = oauth.register(
 def index():
     user = session.get('user')
     if user:
+        print(user)
         return render_template('view/index.html', user=user)
         
     return redirect(url_for('login'))
