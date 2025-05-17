@@ -340,3 +340,52 @@
       width: 90%;
     }
   }
+
+  /* Supprimer tous les styles .learn-more et les remplacer par : */
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .simple-btn {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .simple-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .dark .simple-btn {
+    background-color: #282936;
+  }
+  
+  .dark .simple-btn:hover {
+    background-color: #1e1e2a;
+  }
+  
+  /* Adapter la colonne droite */
+  .right-column {
+    width: 20%;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dark .right-column {
+    background-color: #2d2d2d;
+  }
