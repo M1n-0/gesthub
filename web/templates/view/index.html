@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gesthub</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/index.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 <body>
 
@@ -29,7 +30,7 @@
         <a href="#" class="contact-option" data-role="LEAD HUB">LEAD HUB</a>
         <a href="#" class="contact-option" data-role="CO LEAD HUB">CO LEAD HUB</a>
         <div class="nested-dropdown">
-          <a href="#" class="contact-option expandable">CHEF PROJET ▼</a>
+          <a href="#" class="contact-option expandable">CHEF PROJET <i class="fa-solid fa-caret-down"></i></a>
           <div class="nested-content">
             <a href="#" class="contact-option" data-role="Y. Conception">Y. Conception</a>
             <a href="#" class="contact-option" data-role="Y.Comm">Y.Comm</a>
@@ -40,7 +41,7 @@
     </div>
 
     <div class="profile-menu">
-      <span id="profile-name">LAJUS Erika ⌄</span>
+      <span id="profile-name">{{ user.name }} <i class="fa-solid fa-caret-down"></i></span>
       <div class="profile-dropdown">
         <p>Mon profil</p>
         <button>Déconnexion</button>
