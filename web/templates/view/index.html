@@ -1,12 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUB Nexium - Interface Web</title>
+  <link rel="stylesheet" href="../../assets/css/index.css">
 </head>
 <body>
-    Hello World!
-    <h1>Welcome to the GestHub Web Interface</h1>
+
+  <button id="toggle-darkmode">🌓</button>
+
+  <header>
+    <div class="notification">
+      <span class="bell">🔔</span>
+      <div class="notification-dropdown">
+        <p>📌 Rendu le 03.02.2026</p>
+        <p>📝 Nouvelle tâche ajoutée</p>
+      </div>
+    </div>
+
+    <div class="nav-link">
+      <a href="https://discord.com" target="_blank">Accéder au serveur Discord</a>
+    </div>
+
+    <div class="nav-link dropdown">
+      <span>Contacter</span>
+      <div class="dropdown-content">
+        <a href="#" class="contact-option" data-role="LEAD HUB">LEAD HUB</a>
+        <a href="#" class="contact-option" data-role="CO LEAD HUB">CO LEAD HUB</a>
+        <div class="nested-dropdown">
+          <a href="#" class="contact-option expandable">CHEF PROJET ▼</a>
+          <div class="nested-content">
+            <a href="#" class="contact-option" data-role="Y. Conception">Y. Conception</a>
+            <a href="#" class="contact-option" data-role="Y.Comm">Y.Comm</a>
+            <a href="#" class="contact-option" data-role="Y.dev">Y.dev</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-menu">
+      <span id="profile-name">LAJUS Erika ⌄</span>
+      <div class="profile-dropdown">
+        <p>Mon profil</p>
+        <button>Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- contact -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3 id="modal-recipient">Envoyer un message à <span id="recipient-name"></span></h3>
+      <textarea id="message-content" placeholder="Écrivez votre message ici..."></textarea>
+      <div class="modal-buttons">
+        <button id="cancel-message" class="btn-cancel">Annuler</button>
+        <button id="send-message" class="btn-send">Envoyer</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- clonne gauche pr widget planning -->
+    <aside class="left-column">
+      <div class="planning">Planning / Agenda</div>
+    </aside>
+
+    <!-- Centre pr widget trello -->
+    <section class="center-column">
+      <h1 class="main-title">HUB Nexium</h1>
+      <div class="trello">Zone Trello</div>
+    </section>
+
+    <!-- colonne droite pr partie info user je vais changer ca dans cet emplacement 
+     je vais metrre des boutons et autres features comme des doc etc ou jsp 
+     je m en occupe   -->
+    <aside class="right-column">
+      <div class="user-info">Infos utilisateur</div>
+    </aside>
+  </main>
+  <script>
+    //  mode dark pour les gens qui ne sortent pas de chez eux voir la lumiere du jours
+    document.getElementById("toggle-darkmode").onclick = () => {
+      document.body.classList.toggle("dark");
+    };
+  
+    // profil
+    document.querySelector(".profile-menu").addEventListener("click", (e) => {
+      e.stopPropagation();
+      document.querySelector(".profile-menu").classList.toggle("active");
+    });
+  
+    // notif
+    document.querySelector(".notification").addEventListener("click", (e) => {
+      e.stopPropagation();
+      document.querySelector(".notification").classList.toggle("active");
+    });
+  
+    // ssyteme contact
+    const contactOptions = document.querySelectorAll('.contact-option:not(.expandable)');
+    const contactModal = document.getElementById('contactModal');
+    const recipientName = document.getElementById('recipient-name');
+    const cancelBtn = document.getElementById('cancel-message');
+    const sendBtn = document.getElementById('send-message');
+    const dropdown = document.querySelector('.dropdown');
+    const nestedDropdowns = document.querySelectorAll('.nested-dropdown');
+  
+    //menu princ
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const content = dropdown.querySelector('.dropdown-content');
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    // Gestion des sous-menus
+    nestedDropdowns.forEach(dropdown => {
+      dropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nestedContent = dropdown.querySelector('.nested-content');
+        nestedContent.style.display = nestedContent.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  
+    // Fermer les menus quand on clique ailleurs
+    document.addEventListener('click', () => {
+      document.querySelector('.dropdown-content').style.display = 'none';
+      document.querySelectorAll('.nested-content').forEach(el => {
+        el.style.display = 'none';
+      });
+    });
+  
+    contactOptions.forEach(option => {
+      option.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (option.dataset.role) {
+          recipientName.textContent = option.dataset.role;
+          contactModal.style.display = 'block';
+        }
+      });
+    });
+  
+    document.querySelector('.close-modal').addEventListener('click', () => {
+      contactModal.style.display = 'none';
+    });
+  
+    cancelBtn.addEventListener('click', () => {
+      contactModal.style.display = 'none';
+    });
+  
+    sendBtn.addEventListener('click', () => {
+      const message = document.getElementById('message-content').value;
+      if (message.trim() !== '') {
+        contactModal.style.display = 'none';
+        document.getElementById('message-content').value = '';
+      }
+    });
+  
+    // Fermer la modale si on clique en dehors
+    window.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        contactModal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
