@@ -45,7 +45,7 @@ def auth():
     nonce = session.pop('nonce', None)
     userinfo = keycloak.parse_id_token(token, nonce=nonce)
     session['user'] = userinfo
-    app.logger.info(f"User info: {userinfo}")
+    app.logger.debug(f"User info: {userinfo}")
     return redirect('/')
 
 @app.route('/logout')
