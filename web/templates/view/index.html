@@ -40,13 +40,13 @@
           </div>
         </div>
       </div>
-      <a href="https://mattermost.ninolbt.com/gesthub/channels/town-square" target="_blank">chat</a>
+      <a href="https://mattermost.ninolbt.com/gesthub/channels/town-square" target="_blank">Chat</a>
     </div>
 
     <div class="profile-menu">
       <span id="profile-name">{{ user['preferred_username'] }}<i class="fa-solid fa-caret-down"></i></span>
       <div class="profile-dropdown">
-        <a class="simple-btn" href="" type="button">Profil</a>
+<!--       <a class="simple-btn" href="" type="button">Profil</a> --> 
         <a class="simple-btn" href="/logout" type="button">Déconnexion</a>
       </div>
     </div>
@@ -68,14 +68,20 @@
   <main>
     <!-- clonne gauche pr widget planning -->
     <aside class="left-column">
-      <div class="planning">Planning / Agenda</div>
+      <div class="planning">Planning / Agenda
+        <iframe
+          src="https://mattermost.ninolbt.com/boards/team/8xj6d4ukwigk7rznqi3w339x7e/b3kmbqfwd33dmdy9g9g3ezaoxza/vu4nuxhf73ircznrkrcgzonno8a"
+          style="width: 100%; height: 100%; border: none;"
+          allowfullscreen
+        ></iframe>
+      </div>
     </aside>
 
     <!-- Centre pr widget trello -->
     <section class="center-column">
       <h1 class="main-title">Gesthub</h1>
       <div class="trello">
-        <iframe src="https://mattermost.ninolbt.com/boards/team/8xj6d4ukwigk7rznqi3w339x7e/b3kmbqfwd33dmdy9g9g3ezaoxza/va5xp53m6spbi8qo6qnng7711me" width="100%" height="700" frameborder="0"></iframe>
+        <iframe src="https://mattermost.ninolbt.com/boards/team/8xj6d4ukwigk7rznqi3w339x7e/b3kmbqfwd33dmdy9g9g3ezaoxza/va5xp53m6spbi8qo6qnng7711me" width="100%" height="680" frameborder="0"></iframe>
       </div>
     </section>
 
@@ -83,15 +89,28 @@
      je vais metrre des boutons et autres features comme des doc etc ou jsp 
      je m en occupe   -->
     <!-- Colonne droite avec boutons simples -->
-    <aside class="right-column">
-      <div class="button-container">
-        <button class="simple-btn">Projet</button>
-        <button class="simple-btn">GDD Global</button>
-        <button class="simple-btn">Bible 3D Art</button>
-        <button class="simple-btn">Bible GameDev</button>
-        <button class="simple-btn">Réglement du HUB</button>
-      </div>
-    </aside>
+  <aside class="right-column">
+  <div class="button-container">
+    <button class="simple-btn">Projet</button>
+    <button class="simple-btn">GDD Global</button>
+    <button class="simple-btn">Bible 3D Art</button>
+    <button class="simple-btn">Bible GameDev</button>
+    <button class="simple-btn">Réglement du HUB</button>
+  </div>
+
+  <!-- Bloc annonces admin
+  <div id="admin-announcements" style="margin-top: 2rem;">
+    <h3 style="margin-bottom: 1rem;">📌 Annonces</h3>
+    <div id="annonces-container"></div>
+
+     Formulaire admin caché par défaut-
+    <div id="admin-tools" style="display: none; margin-top: 1rem;">
+      <textarea id="annonce-text" placeholder="Nouvelle annonce..." style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem;"></textarea>
+      <button onclick="submitAnnonce()" style="width: 100%;">📤 Publier</button>
+    </div>
+  </div>
+  </aside>  -->
+
   </main>
   <script src="{{ url_for('static', filename='assets/js/index.js') }}"></script>
 </body>
