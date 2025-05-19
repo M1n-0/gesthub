@@ -81,3 +81,73 @@
         contactModal.style.display = 'none';
       }
     });
+
+// Gestion des annonces
+
+  let isAdmin = false;
+
+  fetch("/api/is_admin")
+    .then(res => res.json())
+    .then(data => {
+      isAdmin = data.admin;
+      if (isAdmin) {
+        document.getElementById("admin-tools").style.display = "block";
+      }
+    });
+
+  fetch("/api/annonces")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("annonces-container");
+      container.innerHTML = "";
+
+      data.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "postit";
+        div.dataset.id = item.id;
+        div.innerHTML = `
+          <span class="annonce-text">${item.text}</span>
+          <br><small>${item.author}</small>
+        `;
+
+        if (isAdmin) {
+          const editBtn = document.createElement("button");
+          editBtn.textContent = "✏️";
+          editBtn.onclick = () => editAnnonce(item.id, item.text);
+          div.appendChild(editBtn);
+
+          const delBtn = document.createElement("button");
+          delBtn.textContent = "🗑️";
+          delBtn.onclick = () => deleteAnnonce(item.id);
+          div.appendChild(delBtn);
+        }
+
+        container.appendChild(div);
+      });
+    });
+
+  function submitAnnonce() {
+    const txt = document.getElementById("annonce-text").value;
+    fetch("/api/annonces", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: txt })
+    }).then(() => location.reload());
+  }
+
+  function deleteAnnonce(id) {
+    fetch(`/api/annonces/${id}`, {
+      method: "DELETE"
+    }).then(() => location.reload());
+  }
+
+  function editAnnonce(id, oldText) {
+    const newText = prompt("Modifier l'annonce :", oldText);
+    if (newText && newText !== oldText) {
+      fetch(`/api/annonces/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: newText })
+      }).then(() => location.reload());
+    }
+  }
