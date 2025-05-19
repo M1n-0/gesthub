@@ -2,17 +2,17 @@
 <img src="https://img.shields.io/github/last-commit/M1n-0/gesthub?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">  
 
 <em>Construit avec les outils et les technologies nécessaires :</em>
-
-<img src="https://img.shields.io/badge/Flask-000000.svg?style=flat&logo=Flask&logoColor=white" alt="Flask">
-<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
-<img src="https://img.shields.io/badge/Keycloak-4D4D4D.svg?style=flat&logo=Keycloak&logoColor=white" alt="Keycloak">
-<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=flat&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
-<img src="https://img.shields.io/badge/MariaDB-003545.svg?style=flat&logo=MariaDB&logoColor=white" alt="MariaDB">
-<br>
-<img src="https://img.shields.io/badge/Docker-2496ED.svg?style=flat&logo=Docker&logoColor=white" alt="Docker">
-<img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
-<img src="https://img.shields.io/badge/Mattermost-0058CC.svg?style=flat&logo=Mattermost&logoColor=white" alt="Mattermost">
-
+<div style="display: flex; flex-wrap: wrap; gap: 5px;">
+   <img src="https://img.shields.io/badge/Flask-000000.svg?style=flat&logo=Flask&logoColor=white" alt="Flask">
+   <img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
+   <img src="https://img.shields.io/badge/Keycloak-4D4D4D.svg?style=flat&logo=Keycloak&logoColor=white" alt="Keycloak">
+   <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=flat&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
+   <img src="https://img.shields.io/badge/MariaDB-003545.svg?style=flat&logo=MariaDB&logoColor=white" alt="MariaDB">
+   <br>
+   <img src="https://img.shields.io/badge/Docker-2496ED.svg?style=flat&logo=Docker&logoColor=white" alt="Docker">
+   <img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
+   <img src="https://img.shields.io/badge/Mattermost-0058CC.svg?style=flat&logo=Mattermost&logoColor=white" alt="Mattermost">
+</div>
 
 ## 🧱 Objectif
 
