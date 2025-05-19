@@ -1,0 +1,59 @@
+{
+  "clientId": "flask-app",
+  "name": "dashboard",
+  "description": "",
+  "rootUrl": "https://dashboard.ninolbt.com",
+  "adminUrl": "https://dashboard.ninolbt.com",
+  "baseUrl": "https://dashboard.ninolbt.com",
+  "surrogateAuthRequired": false,
+  "enabled": true,
+  "alwaysDisplayInConsole": false,
+  "clientAuthenticatorType": "client-secret",
+  "secret": "T5G5jzCBiphnBNh9uuj0f6YNc9HrP8r4",
+  "redirectUris": [
+    "https://dashboard.ninolbt.com/*"
+  ],
+  "webOrigins": [
+    "https://dashboard.ninolbt.com"
+  ],
+  "notBefore": 0,
+  "bearerOnly": false,
+  "consentRequired": false,
+  "standardFlowEnabled": true,
+  "implicitFlowEnabled": false,
+  "directAccessGrantsEnabled": true,
+  "serviceAccountsEnabled": false,
+  "publicClient": false,
+  "frontchannelLogout": true,
+  "protocol": "openid-connect",
+  "attributes": {
+    "oidc.ciba.grant.enabled": "false",
+    "client.secret.creation.time": "1747419098",
+    "backchannel.logout.session.required": "true",
+    "post.logout.redirect.uris": "https://dashboard.ninolbt.com/*",
+    "display.on.consent.screen": "false",
+    "oauth2.device.authorization.grant.enabled": "false",
+    "backchannel.logout.revoke.offline.tokens": "false"
+  },
+  "authenticationFlowBindingOverrides": {},
+  "fullScopeAllowed": true,
+  "nodeReRegistrationTimeout": -1,
+  "defaultClientScopes": [
+    "web-origins",
+    "acr",
+    "profile",
+    "roles",
+    "email"
+  ],
+  "optionalClientScopes": [
+    "address",
+    "phone",
+    "offline_access",
+    "microprofile-jwt"
+  ],
+  "access": {
+    "view": true,
+    "configure": true,
+    "manage": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "clientId": "mattermost",
+  "name": "mattermost",
+  "description": "",
+  "rootUrl": "https://mattermost.ninolbt.com",
+  "adminUrl": "https://mattermost.ninolbt.com",
+  "baseUrl": "https://mattermost.ninolbt.com",
+  "surrogateAuthRequired": false,
+  "enabled": true,
+  "alwaysDisplayInConsole": false,
+  "clientAuthenticatorType": "client-secret",
+  "secret": "DwImxpeoe70Ulu6uslL2I8B0IQr4FmKz",
+  "redirectUris": [
+    "https://mattermost.ninolbt.com/signup/openid/complete"
+  ],
+  "webOrigins": [
+    "https://mattermost.ninolbt.com"
+  ],
+  "notBefore": 0,
+  "bearerOnly": false,
+  "consentRequired": false,
+  "standardFlowEnabled": true,
+  "implicitFlowEnabled": false,
+  "directAccessGrantsEnabled": true,
+  "serviceAccountsEnabled": false,
+  "publicClient": false,
+  "frontchannelLogout": true,
+  "protocol": "openid-connect",
+  "attributes": {
+    "oidc.ciba.grant.enabled": "false",
+    "client.secret.creation.time": "1747504584",
+    "backchannel.logout.session.required": "true",
+    "display.on.consent.screen": "false",
+    "oauth2.device.authorization.grant.enabled": "false",
+    "backchannel.logout.revoke.offline.tokens": "false"
+  },
+  "authenticationFlowBindingOverrides": {},
+  "fullScopeAllowed": true,
+  "nodeReRegistrationTimeout": -1,
+  "defaultClientScopes": [
+    "web-origins",
+    "acr",
+    "profile",
+    "roles",
+    "email"
+  ],
+  "optionalClientScopes": [
+    "address",
+    "phone",
+    "offline_access",
+    "microprofile-jwt"
+  ],
+  "access": {
+    "view": true,
+    "configure": true,
+    "manage": true
+  }
+}
